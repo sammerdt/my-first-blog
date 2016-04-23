@@ -1,13 +1,22 @@
+{% load staticfiles %}
 <html>
     <head>
-        <title>Sam's Blog</title>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-    	<h1>Just another online explorer</h1>
-        <p><b>Welcome!</b></p>
-        <p>My name is Sam, and I am currently taking the Djangogirls course in Groningen. This is my first website built by me, myself and I. Even though it is still empty, I'm already proud of it!</p>
-        <p>Since I will have to write <i>something</i> down here, I will introduce myself with help of the different features of basic html. First, what are things that I am interested in besides coding (actually, I'm not really interested in coding, I just like to make pretty things, which is not working out really well so far)? 
-        	<ul><li>Music, especially singing</li><li>Cooking, mostly Italian and Indian</li><li>History, which I study at the University of Groningen</li></ul></p> 
-    	<p>Html is the only language I'm slightly familiar with, so I will show you the website that I can apply it to: my tumblr! Check it out <a href="http://purrletariat.tumblr.com">here</a>!
+        <div>
+            <h1><a href="/">Django Girls Blog</a></h1>
+        </div>
+
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaks }}</p>
+            </div>
+        {% endfor %}
     </body>
 </html>
